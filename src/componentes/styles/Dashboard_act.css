@@ -1,0 +1,699 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.totals-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+.total-card {
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #00000038;
+}
+
+.total-value {
+    color: #000;
+    font-size: 2.25rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.filters-section {
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 1rem;
+    border: 1px solid #00000038;
+    flex-shrink: 0;
+}
+
+.filters-top-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 280px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #00000038;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #000;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.search-input::placeholder {
+    color: #9ca3af;
+}
+
+.clear-search {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999999;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.clear-search:hover {
+    color: #1a1a1a;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #00000038;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+}
+
+.filter-btn:hover {
+    background: #fff;
+    border-color: #000;
+}
+
+.filter-btn.active {
+    background: #000;
+    color: #fff;
+}
+
+.filter-btn i {
+    font-size: 1rem;
+}
+
+.dashboard-section {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 0;
+}
+
+.department-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #00000038;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    min-height: 200px;
+}
+
+.department-card:hover {
+    border-color: #000;
+}
+
+.department-card.expanded {
+    min-height: auto;
+}
+
+.percentage-circle {
+    transform: rotate(-90deg);
+}
+
+.percentage-bg {
+    fill: none;
+    stroke: #0000000f;
+    stroke-width: 8;
+}
+
+.percentage-fill {
+    fill: none;
+    stroke: #000;
+    stroke-width: 8;
+    stroke-linecap: round;
+
+}
+
+.percentage-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    fill: #1f2937;
+    transform: rotate(90deg);
+    transform-origin: 70px 70px;
+}
+
+.card-title {
+    color: #000;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.card-stats {
+    text-align: center;
+    width: 100%;
+}
+
+.card-stats table {
+    border-collapse: collapse;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+}
+
+.card-stats th {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
+
+.card-stats td {
+    color: #1f2937;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+}
+
+.card-details {
+    width: 100%;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.1rem 0;
+    font-size: 0.95rem;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.detail-value {
+    font-weight: 500;
+    color: #666666;
+}
+
+.detail-item.highlight {
+    padding: 0.5rem;
+    border: 1px solid #1a1a1a;
+    border-radius: 6px;
+}
+
+.detail-item.highlight .detail-value {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.detail-item.warning {
+    padding: 0.5rem;
+    border-top: 1px solid #000;
+
+}
+
+/* ===================== RESPONSIVE DESIGN ===================== */
+
+/* Pantallas grandes (hasta 1400px) */
+@media (max-width: 1400px) {
+    .cards-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablets y pantallas medianas (hasta 1024px) */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        padding: 1.5rem;
+    }
+
+    .navbar {
+        gap: 1.5rem;
+        padding: 1.2rem;
+    }
+
+    .navbar-menu {
+        gap: 2rem;
+    }
+
+    .navbar-link {
+        font-size: 0.95rem;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .totals-section {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .filters-top-row {
+        flex-direction: column;
+    }
+
+    .search-box {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .filter-select-container {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .filter-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .btn-confirmar-asistencia {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+
+    .btn-volver-dashboard {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 15px;
+    }
+
+    .pagination-container {
+        padding: 1rem;
+        gap: 0.4rem;
+    }
+
+    .pagination-btn,
+    .pagination-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes (hasta 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .navbar-menu {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .navbar-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .refresh-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dashboard-container {
+        padding: 1rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .dashboard-title {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .btn-confirmar-asistencia {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-volver-dashboard {
+        width: auto;
+        margin: 15px auto;
+        display: flex;
+    }
+    
+    .totals-section {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .total-card {
+        padding: 1.5rem;
+    }
+    
+    .total-value {
+        font-size: 2.5rem;
+    }
+    
+    .filters-section {
+        padding: 1rem;
+    }
+
+    .filters-top-row {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .search-box {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .filter-select-container {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .filter-buttons {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .filter-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .filter-btn i {
+        font-size: 0.95rem;
+    }
+    
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .department-card {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .card-header {
+        margin-bottom: 0.75rem;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+        padding: 0.5rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .stats-numbers {
+        font-size: 1.75rem;
+    }
+
+    .card-percentage svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .percentage-text {
+        font-size: 1.5rem;
+    }
+
+    .detail-item {
+        font-size: 0.9rem;
+
+    }
+
+    .circular-progress-container svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .circular-progress-text {
+        font-size: 1.3rem;
+    }
+
+    .pagination-container {
+        flex-wrap: wrap;
+        padding: 1rem;
+        gap: 0.4rem;
+    }
+
+    .pagination-btn,
+    .pagination-number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .pagination-info {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .refresh-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Móviles (hasta 480px) */
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 0.75rem;
+    }
+
+    .dashboard-title {
+        font-size: 1.25rem;
+    }
+
+    .btn-confirmar-asistencia {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .btn-confirmar-asistencia i {
+        font-size: 16px;
+    }
+
+    .btn-volver-dashboard {
+        padding: 8px 16px;
+        font-size: 13px;
+        margin: 10px auto;
+    }
+
+    .total-card {
+        padding: 1.25rem;
+    }
+
+    .total-value {
+        font-size: 2rem;
+    }
+
+    .total-label {
+        font-size: 0.85rem;
+    }
+
+    .filters-section {
+        padding: 0.75rem;
+    }
+
+    .search-input {
+        font-size: 0.9rem;
+        padding: 0.75rem 2.25rem 0.75rem 2.75rem;
+    }
+
+    .filter-select {
+        font-size: 0.9rem;
+        padding: 0.75rem 2.25rem 0.75rem 2.5rem;
+    }
+
+    .filter-btn {
+        font-size: 0.85rem;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .department-card {
+        padding: 1.25rem;
+    }
+
+    .card-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.75rem;
+    }
+
+    .card-title {
+        font-size: 0.95rem;
+    }
+
+    .stats-numbers {
+        font-size: 1.5rem;
+    }
+
+    .card-percentage svg {
+        width: 100px;
+        height: 100px;
+    }
+
+    .percentage-text {
+        font-size: 1.3rem;
+    }
+
+    .detail-item {
+        font-size: 0.85rem;
+    }
+
+    .refresh-button {
+        font-size: 0.95rem;
+    }
+
+    .refresh-button i {
+        font-size: 1rem;
+    }
+
+    .pagination-btn,
+    .pagination-number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .pagination-info {
+        font-size: 0.8rem;
+    }
+}
+
+/* Móviles muy pequeños (hasta 360px) */
+@media (max-width: 360px) {
+    .dashboard-container {
+        padding: 0.5rem;
+    }
+
+    .dashboard-title {
+        font-size: 1.1rem;
+    }
+
+    .btn-confirmar-asistencia {
+        padding: 8px 16px;
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    .total-value {
+        font-size: 1.75rem;
+    }
+
+    .total-label {
+        font-size: 0.75rem;
+    }
+
+    .search-input,
+    .filter-select {
+        font-size: 0.85rem;
+        padding: 0.65rem 2rem 0.65rem 2.5rem;
+    }
+
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 0.6rem 0.65rem;
+    }
+
+    .card-percentage svg {
+        width: 90px;
+        height: 90px;
+    }
+
+    .percentage-text {
+        font-size: 1.2rem;
+    }
+
+    .stats-numbers {
+        font-size: 1.3rem;
+    }
+
+    .refresh-button {
+        font-size: 0.9rem;
+    }
+
+    .pagination-container {
+        gap: 0.3rem;
+    }
+
+    .pagination-btn,
+    .pagination-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+}

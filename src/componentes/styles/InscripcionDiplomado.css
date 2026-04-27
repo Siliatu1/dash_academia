@@ -1,0 +1,475 @@
+.inscripcion-diplomado-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #f9fafb;
+    padding: 2rem;
+    padding-top: 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+.inscripcion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-volver-inscripcion {
+    padding: 0.5rem 1rem;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-volver-inscripcion:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inscripcion-title {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    flex: 1;
+}
+
+.inscripcion-title i {
+    color: #999999;
+}
+
+.btn-refresh-inscripcion {
+    padding: 0.5rem 0.75rem;
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-refresh-inscripcion:hover {
+    transform: rotate(180deg);
+    background: #1a1a1a;
+    color: #ffffff;
+    border-color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inscripcion-tabla-container {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.foto-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto-empleado-tabla {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+}
+
+.foto-placeholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.mensaje-sin-datos {
+    text-align: center;
+    padding: 3rem;
+    color: #999999;
+    font-size: 1rem;
+}
+
+.error-message {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.error-message i {
+    font-size: 3rem;
+    color: #f44336;
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    color: #999999;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-retry {
+    padding: 0.5rem 1rem;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.btn-retry:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de la tabla Ant Design */
+.tabla-inscripcion-ant .ant-table {
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.tabla-inscripcion-ant .ant-table-thead > tr > th {
+    background: #f5f5f5;
+    color: #1a1a1a;
+    font-weight: 600;
+    text-align: center;
+    padding: 1rem 0.75rem;
+    border: 1px solid #f0f0f0;
+}
+
+.tabla-inscripcion-ant .ant-table-tbody > tr > td {
+    padding: 1rem 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #f0f0f0;
+}
+
+.tabla-inscripcion-ant .ant-table-tbody > tr:hover {
+    background: #f9f9f9;
+}
+
+.inscripcion-tabla-container .ant-pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inscripcion-tabla-container .ant-pagination-item {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50% !important;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    color: #999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-weight: 600;
+}
+
+.inscripcion-tabla-container .ant-pagination-item:hover {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+    transform: scale(1.05);
+}
+
+.inscripcion-tabla-container .ant-pagination-item a {
+    color: #999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.inscripcion-tabla-container .ant-pagination-item-active {
+    background: #1a1a1a !important;
+    border-color: #1a1a1a !important;
+}
+
+.inscripcion-tabla-container .ant-pagination-item-active a {
+    color: #ffffff !important;
+}
+
+.inscripcion-tabla-container .pagination-btn-custom {
+    min-width: 32px;
+    height: 32px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: #999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.inscripcion-tabla-container .pagination-btn-custom:hover {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+    transform: scale(1.05);
+}
+
+.inscripcion-tabla-container .pagination-btn-custom:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.inscripcion-tabla-container .ant-pagination-prev,
+.inscripcion-tabla-container .ant-pagination-next {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50% !important;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.inscripcion-tabla-container .ant-pagination-prev:hover,
+.inscripcion-tabla-container .ant-pagination-next:hover {
+    border-color: #1a1a1a;
+}
+
+.inscripcion-tabla-container .ant-pagination-prev button,
+.inscripcion-tabla-container .ant-pagination-next button {
+    color: #999999;
+}
+
+.inscripcion-tabla-container .ant-pagination-prev:hover button,
+.inscripcion-tabla-container .ant-pagination-next:hover button {
+    color: #1a1a1a;
+}
+
+.inscripcion-tabla-container .ant-pagination-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.inscripcion-tabla-container .ant-pagination-total-text {
+    color: #999999;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+.btn-eliminar {
+    padding: 0.5rem 0.75rem;
+    background: #f44336;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+}
+
+.btn-eliminar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    background: #d32f2f;
+}
+
+.btn-eliminar:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .inscripcion-diplomado-container {
+        padding: 1rem;
+    }
+
+    .inscripcion-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .inscripcion-title {
+        font-size: 1.25rem;
+        text-align: center;
+        order: 2;
+    }
+
+    .btn-volver-inscripcion {
+        order: 1;
+    }
+
+    .btn-refresh-inscripcion {
+        order: 3;
+    }
+
+    .tabla-container {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    .tabla-inscripcion-ant .ant-table-thead > tr > th {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .tabla-inscripcion-ant .ant-table-tbody > tr > td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .inscripcion-diplomado-container {
+        padding: 0.75rem;
+    }
+
+    .inscripcion-header {
+        flex-direction: column;
+        padding: 0.75rem;
+    }
+
+    .inscripcion-title {
+        font-size: 1.1rem;
+    }
+
+    .btn-volver-inscripcion,
+    .btn-refresh-inscripcion {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .tabla-container {
+        padding: 0.75rem;
+    }
+
+    .tabla-inscripcion-ant .ant-table {
+        font-size: 0.85rem;
+    }
+
+    .tabla-inscripcion-ant .ant-table-thead > tr > th {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+    }
+
+    .tabla-inscripcion-ant .ant-table-tbody > tr > td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-eliminar {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .foto-empleado-tabla,
+    .foto-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tabla-inscripcion-ant .ant-table-thead > tr > th,
+    .tabla-inscripcion-ant .ant-table-tbody > tr > td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .foto-empleado-tabla,
+    .foto-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inscripcion-title {
+        font-size: 18px;
+    }
+
+    .stat-card {
+        padding: 15px 20px;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
