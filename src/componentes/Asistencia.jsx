@@ -577,7 +577,7 @@ const Asistencia = () => {
                             <div className="total-item">
                                
                                 <div className="total-info">
-                                    <span className="total-label">Total Colaboradores</span>
+                                    <span className="total-label">Total Colaboradores Asistencia</span>
                                     <span className="total-valor">
                                         {filteredData.filter(r => r.attributes?.confirm === true).length}
                                     </span>
@@ -586,7 +586,7 @@ const Asistencia = () => {
                             <div className="total-item">
                                 
                                 <div className="total-info">
-                                    <span className="total-label">Total acompañantes</span>
+                                    <span className="total-label">Total acompañantes Asistencia</span>
                                     <span className="total-valor">
                                         {filteredData.filter(r => r.attributes?.llevaAcompanante === true && r.attributes?.confirm === true).length}
                                     </span>
