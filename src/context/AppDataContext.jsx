@@ -23,10 +23,43 @@ export function AppDataProvider({ children }) {
   const [state, setState] = useState(getInitialState)
 
   const buildDerivedState = useCallback((empleados, reservas) => {
+    // Filtrar solo empleados con status/estado activo antes de calcular estadísticas
+    const isActiveEmpleado = (empleado) => {
+      if (!empleado) return false;
+
+      // Si existe el campo `status`, priorizarlo (valor esperado: 'activo')
+      if (empleado.status != null) {
+        return empleado.status
+          .toString()
+          .toLowerCase()
+          .trim() === 'activo';
+      }
+
+      // boolean flags
+      if (typeof empleado.active === 'boolean') return empleado.active === true;
+      if (typeof empleado.isActive === 'boolean') return empleado.isActive === true;
+
+      // posibles campos de estado en distintas APIs
+      const statusRaw = (
+        empleado.estado || empleado.estado_empleado || ''
+      ).toString().toLowerCase().trim();
+
+      return (
+        statusRaw === 'activo' ||
+        statusRaw === 'active' ||
+        statusRaw === '1' ||
+        statusRaw === 'true'
+      );
+    };
+
+    const empleadosActivos = Array.isArray(empleados)
+      ? empleados.filter(isActiveEmpleado)
+      : [];
+
     return {
-      dashboardStats: buildDashboardStats(empleados, reservas),
-      lideresStats: buildLideresStats(empleados, reservas),
-      detalleStatsIndex: buildDetalleStatsIndex(empleados, reservas),
+      dashboardStats: buildDashboardStats(empleadosActivos, reservas),
+      lideresStats: buildLideresStats(empleadosActivos, reservas),
+      detalleStatsIndex: buildDetalleStatsIndex(empleadosActivos, reservas),
     }
   }, [])
 

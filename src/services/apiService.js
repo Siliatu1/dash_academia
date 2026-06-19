@@ -42,9 +42,51 @@ export const getEmpleados = async (forceRefresh = false) => {
         .get(`${API_ALOHA}/empleados3`)
         .then((response) => {
 
-            const empleados = response.data.data || [];
+            const empleadosRaw = response.data.data || [];
 
-            console.log("👥 TOTAL EMPLEADOS API:", empleados.length);
+            
+            const isActiveEmpleado = (empleado) => {
+                if (!empleado) return false;
+
+                if (empleado.status != null) {
+                    return empleado.status.toString().toLowerCase().trim() === 'activo';
+                }
+
+                if (typeof empleado.active === 'boolean') return empleado.active === true;
+                if (typeof empleado.isActive === 'boolean') return empleado.isActive === true;
+
+                const getNested = (obj, ...keys) => {
+                    return keys.reduce((acc, key) => (acc && acc[key] != null ? acc[key] : undefined), obj);
+                };
+
+                const candidates = [
+                    empleado.estado,
+                    empleado.estado_empleado,
+                    getNested(empleado, 'attributes', 'status'),
+                    getNested(empleado, 'attributes', 'estado'),
+                    getNested(empleado, 'attributes', 'active'),
+                    getNested(empleado, 'user', 'active')
+                ];
+
+                for (const raw of candidates) {
+                    if (raw == null) continue;
+
+                    const str = raw.toString().toLowerCase().trim();
+
+                    if (str === 'activo' || str === 'active' || str === '1' || str === 'true') {
+                        return true;
+                    }
+
+                    if (str === 'inactivo' || str === 'inactive' || str === '0' || str === 'false') {
+                        return false;
+                    }
+                }
+                return false;
+            };
+
+            const empleados = empleadosRaw.filter(isActiveEmpleado);
+
+            console.log("👥 TOTAL EMPLEADOS API (raw):", empleadosRaw.length, " -> activos filtrados:", empleados.length);
 
             cacheEmpleados = empleados;
 
